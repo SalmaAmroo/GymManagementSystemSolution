@@ -1,11 +1,7 @@
 ﻿using GymManagement_DAL_.Data.DbContexts;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GymManagementDAL.Repositories.Classes
 {
@@ -14,10 +10,14 @@ namespace GymManagementDAL.Repositories.Classes
         private readonly Dictionary<Type, object> _repositories = new();
         private readonly GymDbContext _GymDbContext;
 
-        public UnitOfWork(GymDbContext GymDbContext)
+        public UnitOfWork(GymDbContext GymDbContext, ISessionRepository sessionRepository)
         {
-            this._GymDbContext = GymDbContext;
+            _GymDbContext = GymDbContext;
+            SessionRepository = sessionRepository;
         }
+
+        public ISessionRepository SessionRepository { get;}
+
         public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity, new()
         {
             var EntityType = typeof(TEntity);
