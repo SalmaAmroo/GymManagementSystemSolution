@@ -1,5 +1,7 @@
 using GymManagement_DAL_.Data.DbContexts;
 using GymManagementBLL;
+using GymManagementBLL.Services.Interfaces;
+using GymManagementBLL.Services.ServicesImplementation;
 using GymManagementDAL.Data.Dataseed;
 using GymManagementDAL.Repositories.Classes;
 using GymManagementDAL.Repositories.Interfaces;
@@ -22,6 +24,7 @@ namespace GymManagementPL
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
             builder.Services.AddAutoMapper(X=>X.AddProfile(new MappingProfiles())); 
+            builder.Services.AddScoped<IAnalyticService, AnalyticService>();
             var app = builder.Build();
             #region Data Seeding
             using var scope = app.Services.CreateScope();
