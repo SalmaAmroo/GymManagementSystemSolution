@@ -3,7 +3,7 @@
 
 namespace GymManagementBLL.Services.Interfaces
 {
-    internal interface IMemberService
+    public interface IMemberService
     {
         IEnumerable<MemberViewModels> GetAllMembers();
 
