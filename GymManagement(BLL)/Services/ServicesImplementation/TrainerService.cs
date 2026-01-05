@@ -7,7 +7,7 @@ using GymManagementDAL.Repositories.Interfaces;
 
 namespace GymManagementBLL.Services.ServicesImplementation
 {
-    internal class TrainerService : ITrainerService
+    public class TrainerService : ITrainerService
     {
         private readonly IUnitOfWork _UnitOfWork;
         private readonly IMapper _mapper;
@@ -34,7 +34,7 @@ namespace GymManagementBLL.Services.ServicesImplementation
         public IEnumerable<TrainerViewModel> GetAllTrainers()
         {
             var Trainers = _UnitOfWork.GetRepository<Trainer>().GetAll();
-            if (Trainers is null || Trainers.Any()) return [];
+            if (Trainers is null || !Trainers.Any()) return [];
             var TrainerViewModels = _mapper.Map<IEnumerable<TrainerViewModel>>(Trainers);
             return TrainerViewModels;
         }

@@ -2,7 +2,7 @@
 {
     public enum Specialties
     {
-        GeneralFitness =1,
+        GeneralFitness ,
         Yoga,
         Boxing,
         Crossfit

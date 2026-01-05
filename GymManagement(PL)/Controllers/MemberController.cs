@@ -21,7 +21,7 @@ namespace GymManagementPL.Controllers
         {
             if (id <= 0)
             {
-                TempData["ErrorMessage"] = "Id Number Of Member Can Nor Be 0 Or Negative Number";
+                TempData["ErrorMessage"] = "Id Number Of Member Can Not Be 0 Or Negative Number";
                 return RedirectToAction(nameof(Index));
             }
             var Member = _memberservice.GetMemberDetails(id);
@@ -56,7 +56,7 @@ namespace GymManagementPL.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateMember(CreateMemberViewModel CreatedMember)
+        public ActionResult Create(CreateMemberViewModel CreatedMember)
         {
             if (!ModelState.IsValid)
             {
@@ -74,6 +74,76 @@ namespace GymManagementPL.Controllers
             }
 
                 return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region Edit Member
+        public ActionResult MemberEdit (int id)
+        {
+            if(id<=0)
+            {
+                TempData["ErrorMessage"] = "Id Number Of Member Can Nor Be 0 Or Negative Number";
+                return RedirectToAction(nameof(Index));
+            }
+            var Member = _memberservice.GetMemberToUpdateViewModel(id);
+            if(Member is null)
+            {
+                TempData["ErrorMessage"] = "Member Not Found";
+                return RedirectToAction(nameof(Index));
+            }
+            return View(Member);
+        }
+
+        [HttpPost]
+        public ActionResult MemberEdit([FromRoute]int id ,MemberToUpdateViewModel MemberToEdit)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(MemberToEdit);
+            }
+            var Result = _memberservice.UpdateMember(id, MemberToEdit);
+            if (Result)
+            {
+                TempData["SuccessMessage"] = "Member Updated Successfully";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed To Update Member ";
+            }
+            return  RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region Delete Member
+        public ActionResult DeleteMember(int id)
+        {
+            if (id <= 0)
+            {
+                TempData["ErrorMessage"] = "Id Number Of Member Can Nor Be 0 Or Negative Number";
+                return RedirectToAction(nameof(Index));
+            }
+            var Member = _memberservice.GetMemberDetails(id);
+            if (Member is null)
+            {
+                TempData["SuccessMessage"] = "Member Not Found";
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.MemberId = Member.Id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult DeleteConfirmed([FromForm] int id)
+        {
+            var Result = _memberservice.RemoveMember(id);
+            if (Result)
+            {
+                TempData["SuccessMessage"] = "Member Deleted Successfully";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed To Delete Member ";
+            }
+            return RedirectToAction(nameof(Index));
         }
         #endregion
     }

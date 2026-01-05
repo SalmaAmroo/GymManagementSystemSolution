@@ -6,6 +6,7 @@ using GymManagementBLL.ViewModels.TrainerViewModels;
 using GymManagementDAL.Entities;
 using GymManagementSystemBLL.ViewModels.SessionViewModels;
 using System.Net;
+using System.Runtime.Serialization;
 
 
 namespace GymManagementBLL
@@ -35,7 +36,8 @@ namespace GymManagementBLL
         {
             CreateMap<CreateMemberViewModel, Member>()
             .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src))
-            .ForMember(dest=>dest.HealthRecord,opt=>opt.MapFrom(src=>src.HealthRecordViewModel));
+            .ForMember(dest=>dest.HealthRecord,opt=>opt.MapFrom(src=>src.HealthRecordViewModel))
+            .ForMember(dest=>dest.PhoneNumber,opt=>opt.MapFrom(src=>src.Phone));
             
             CreateMap<CreateMemberViewModel, Address>()
                 .ForMember(dest => dest.BuildNumber, opt => opt.MapFrom(src => src.BuildNumber))
@@ -54,7 +56,9 @@ namespace GymManagementBLL
             CreateMap<Member, MemberToUpdateViewModel>()
                 .ForMember(dest => dest.BuildNumber, opt => opt.MapFrom(src => src.Address.BuildNumber))
                 .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
-                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City));
+                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.PhoneNumber));
+
 
             CreateMap<MemberToUpdateViewModel, Member>()
                 .ForMember(dest => dest.Name, opt => opt.Ignore())
@@ -90,7 +94,9 @@ namespace GymManagementBLL
                     City = src.City,
                 }));
             CreateMap<Trainer, TrainerViewModel>()
-                .ForMember(dest => dest.Specialty, opt => opt.MapFrom(src => src.Specialtyies.ToString()));
+                .ForMember(dest => dest.Specialties, opt => opt.MapFrom(src => src.Specialtyies.ToString()))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.PhoneNumber))
+                .ForMember(dest=>dest.Address,opt=>opt.MapFrom(src=>$"{src.Address.BuildNumber}-{src.Address.Street}-{src.Address.City}"));
 
             CreateMap<Trainer, TrainerToUpdateViewModel>()
                 .ForMember(dest=>dest.BuildNumber , opt=>opt.MapFrom(src=>src.Address.BuildNumber))
