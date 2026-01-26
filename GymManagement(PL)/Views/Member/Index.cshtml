@@ -1,6 +1,6 @@
 ﻿@using GymManagementBLL.ViewModels.MemberViewModels
 @model IEnumerable<MemberViewModels>
-
+@{ViewData["Title"] = "Members";}
 
         @if (TempData["SuccessMessage"] is not null)
             {
@@ -49,13 +49,13 @@
                                     <tr>
                                         <td>
                                             <span class="avatar">
-                                                @if(string.IsNullOrEmpty(member.Photo))
+                                                @if(!string.IsNullOrEmpty(member.Photo))
                                                 {
-                                                    <img src="~/images/User.jpg" alt="Default Avatar" class="rounded-circle"
+                                                   <img src="~/images/Members/@member.Photo" alt="Default Avatar" class="rounded-circle"
                                                     style="width: 40px; height: 40px;" />
                                                 }else
                                                 {
-                                                    <img src="~/images/@member.Photo" alt="Default Avatar" class="rounded-circle"
+                                                    <img src="~/images/user.jpg" alt="Default Avatar" class="rounded-circle"
                                                          style="width: 40px; height: 40px;" />
                                                 }
                                             </span>
@@ -135,16 +135,5 @@
 
    @section Scripts
    {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const alertBox = document.getElementById("Alert");
-            if (alertBox) {
-                setTimeout(() => {
-                    alertBox.style.transition = "opacity 0.5s ease";
-                    alertBox.style.opacity = "0";
-                    setTimeout(() => alertBox.remove(), 500);
-                }, 1500);
-            }
-        });
-    </script>
+    <partial name="_AlertBoxScripts" />
    }

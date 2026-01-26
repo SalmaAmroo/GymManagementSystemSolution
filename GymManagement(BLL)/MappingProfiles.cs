@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using GymManagementBLL.ViewModels.BookingViewModel;
+using GymManagementBLL.ViewModels.MemberShipViewModels;
 using GymManagementBLL.ViewModels.MemberViewModels;
 using GymManagementBLL.ViewModels.PlanViewModels;
 using GymManagementBLL.ViewModels.ServiceViewModels;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementBLL.ViewModels.TrainerViewModels;
 using GymManagementDAL.Entities;
 using GymManagementSystemBLL.ViewModels.SessionViewModels;
@@ -19,6 +22,8 @@ namespace GymManagementBLL
             MapMember();
             MapPlan();
             MapTrainer();
+            MapMemberShip();
+            MapBooking();
 
 
         }
@@ -31,6 +36,9 @@ namespace GymManagementBLL
 
             CreateMap<CreateSessionViewModel, Session>();
             CreateMap<Session, UpdateSessionViewModel>().ReverseMap();
+            CreateMap<Trainer, TrainerSelectViewModel>();
+            CreateMap<Category, CategorySelectViewModel>()
+                     .ForMember(dest => dest.Name, opt=>opt.MapFrom(src=>src.CategoryName));
         }
         private void MapMember()
         {
@@ -116,6 +124,28 @@ namespace GymManagementBLL
 
 
 
+        }
+        private void MapMemberShip()
+        {
+            CreateMap<MemberShip, MemberShipViewModel>()
+                .ForMember(dest => dest.MemberName, opt => opt.MapFrom(src => src.Member.Name))
+                .ForMember(dest => dest.PlanName, opt => opt.MapFrom(src => src.Plan.Name))
+                .ForMember(dest => dest.StartDate, opt=>opt.MapFrom(src=>src.CreatedAt)) ;
+        
+            CreateMap<CreateMemberShipViewModel, MemberShip>();
+            CreateMap<Plan, PlanForSelectListViewModel>();
+            CreateMap<Member, NameForSelectListViewModel>();
+
+
+
+
+        }
+        private void MapBooking()
+        {
+            CreateMap<MemberSession, MemberForSessionViewModel>()
+                .ForMember(dest => dest.MemberName, opt => opt.MapFrom(src => src.Member.Name))
+                .ForMember(dest=>dest.BookingDate,opt=>opt.MapFrom(src=>src.CreatedAt.ToString()));
+            CreateMap<CreateBookingViewModel, MemberSession>();
         }
 
     }

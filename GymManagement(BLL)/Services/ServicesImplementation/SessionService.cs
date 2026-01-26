@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GymManagementBLL.Services.Interfaces;
 using GymManagementBLL.ViewModels.ServiceViewModels;
+using GymManagementBLL.ViewModels.SessionViewModels;
 using GymManagementDAL.Entities;
 using GymManagementDAL.Repositories.Interfaces;
 using GymManagementSystemBLL.ViewModels.SessionViewModels;
@@ -44,7 +45,7 @@ namespace GymManagementBLL.Services.ServicesImplementation
         public IEnumerable<SessionViewModel> GetAllSessions()
         {
             var Sessions = _UnitOfWork.SessionRepository.GetAllSessionsWithTrainerAndCategory();
-            if (Sessions.Any()) return [];
+            if (!Sessions.Any()) return [];
             var MappedSessions = _mapper.Map<IEnumerable<Session>,IEnumerable<SessionViewModel>>(Sessions);
             foreach (var session in MappedSessions)
             {
@@ -140,6 +141,20 @@ namespace GymManagementBLL.Services.ServicesImplementation
 
         }
 
+        public IEnumerable<TrainerSelectViewModel> GetTrainersForDropDown()
+        {
+            var Trainers = _UnitOfWork.GetRepository<Trainer>().GetAll();
+            return _mapper.Map<IEnumerable<TrainerSelectViewModel>>(Trainers);
+        }
+
+        public IEnumerable<CategorySelectViewModel> GetCategoriesForDropDown()
+        {
+            var Categories = _UnitOfWork.GetRepository<Category>().GetAll();
+            return _mapper.Map<IEnumerable<CategorySelectViewModel>>(Categories);
+        }
+
+
+
         private bool IsTrainerExists(int TrainerId)
         {
             return _UnitOfWork.GetRepository<Trainer>().GetById(TrainerId) is not null;
@@ -151,10 +166,11 @@ namespace GymManagementBLL.Services.ServicesImplementation
 
         private bool IsDateTimeValid(DateTime StartDate , DateTime EndDate)
         {
-            return StartDate < EndDate ;
+            return StartDate < EndDate && DateTime.Now < StartDate;
         }
 
-        
+
+
 
         #endregion
     }

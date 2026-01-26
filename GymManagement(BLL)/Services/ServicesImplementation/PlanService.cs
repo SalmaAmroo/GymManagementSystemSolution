@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace GymManagementBLL.Services.ServicesImplementation
 {
-    internal class PlanService : IPlanService
+    public class PlanService : IPlanService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ namespace GymManagementBLL.Services.ServicesImplementation
         public IEnumerable<PlanViewModel> GetAllPlans()
         {
             var Plans = _unitOfWork.GetRepository<Plan>().GetAll();
-            if (Plans is null || Plans.Any()) return [];
+            if (Plans is null || !Plans.Any()) return [];
             return _mapper.Map<IEnumerable<PlanViewModel>>(Plans);
 
         }

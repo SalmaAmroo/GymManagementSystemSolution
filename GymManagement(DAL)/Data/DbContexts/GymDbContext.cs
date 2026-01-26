@@ -1,24 +1,33 @@
 ﻿using GymManagementDAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 
 namespace GymManagement_DAL_.Data.DbContexts
 {
-    public class GymDbContext : DbContext
+    public class GymDbContext : IdentityDbContext<ApplicationUser>
     {
         public GymDbContext( DbContextOptions<GymDbContext> options) : base(options)
         {
             
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer("Server=.;Database=GymManagementDB;Trusted_Connection=True;TrustServerCertificate=True;");
-
-        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Entity<ApplicationUser>(Au =>
+            {
+                Au.Property(x => x.FirstName)
+                  .HasColumnType("varchar")
+                  .HasMaxLength(50);
+
+                Au.Property(x => x.LastName)
+                  .HasColumnType("varchar")
+                  .HasMaxLength(50);
+
+            });
         }
 
         #region BbSets
@@ -30,6 +39,7 @@ namespace GymManagement_DAL_.Data.DbContexts
         public DbSet<Session> Sessions { get; set; }
         public DbSet<MemberShip> MemberShips { get; set; }
         public DbSet<MemberSession> MemberSessions { get; set; }
+     
         #endregion
     }
 }
