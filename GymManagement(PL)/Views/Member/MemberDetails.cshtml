@@ -7,7 +7,7 @@
                     <img src="~/images/Members/@Model.Photo" alt="Member Photo" class="rounded-circle"
                          style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #fff; margin-top: -60px;" />
                 </div>
-                <div class="card-body text-center">
+                <div class="card-body  text-center ">
                     <h2 class="mb-1 text-primary-color">@Model.Name</h2>
                     <h4 class="mb-2 pb-1 border-bottom d-block">
                         @(Model.PlanName ?? "No Active Plan")
@@ -15,25 +15,25 @@
                     <div class="mt-4 text-start">
                         <div class="row g-3">
                             <div class="col-12">
-                                <div class="p-3 bg-light rounded">
+                                <div class="p-3 info-box rounded">
                                     <small class="text-muted d-block mb-1">Email</small>
                                     <strong>@Model.Email</strong>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="p-3 bg-light rounded">
+                                <div class="p-3 info-box rounded">
                                     <small class="text-muted d-block mb-1">Phone</small>
                                     <strong>@Model.Phone</strong>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="p-3 bg-light rounded">
+                                <div class="p-3 info-box rounded">
                                     <small class="text-muted d-block mb-1">Gender</small>
                                     <strong>@Model.Gender</strong>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="p-3 bg-light rounded">
+                                <div class="p-3 info-box rounded">
                                     <small class="text-muted d-block mb-1">Date of Birth</small>
                                     <strong>@Model.DateOfBirth</strong>
                                 </div>
@@ -43,13 +43,13 @@
                            @if(Model.PlanName is not null)
                             {
                                 <div class="col-6">
-                                    <div class="p-3 bg-light rounded">
+                                    <div class="p-3 info-box rounded">
                                         <small class="text-muted d-block mb-1">Membership Start Date</small>
                                         <strong>@Model.MemberShipStartDate</strong>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="p-3 bg-light rounded">
+                                    <div class="p-3 info-box rounded">
                                         <small class="text-muted d-block mb-1">Membership End Date</small>
                                         <strong>@Model.MemberShipEndDate</strong>
                                     </div>
@@ -57,7 +57,7 @@
                             }
 
                             <div class="col-12">
-                                <div class="p-3 bg-light rounded">
+                                <div class="p-3 info-box rounded">
                                     <small class="text-muted d-block mb-1">Address</small>
                                     <strong>@(Model.Address ?? "No Address")</strong>
                                 </div>

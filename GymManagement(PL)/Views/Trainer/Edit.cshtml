@@ -12,15 +12,15 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="mb-4 pb-3 border-bottom">
-                        <small class="text-muted d-block mb-1">Editing Profile For</small>
-                        <h4 class="mb-0 text-black">Mohamed</h4>
+                        <small class="text-muted mb-1">Editing Profile For</small>
+                        <h4 class="mb-0 text-white">@Model.Name</h4>
                     </div>
                     @Html.ValidationMessage("DataMissed", new { @class = "text-danger" })
                     <form asp-action="Edit" method="post">
                         <input asp-for="Name" hidden/>
                         <!-- Personal Information -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Personal Information</h5>
+                            <h5 class="text-primary-color fw-bold">Personal Information</h5>
                             <hr class="mt-2">
                         </div>
                         <div class="row g-3 mb-4">
@@ -56,7 +56,7 @@
 
                         <!-- Professional Information -->
                         <div class="section-header mb-3">
-                            <h5 class="text-primary fw-bold">Professional Information</h5>
+                            <h5 class="text-primary-color fw-bold">Professional Information</h5>
                             <hr class="mt-2">
                         </div>
                         <div class="row g-3">

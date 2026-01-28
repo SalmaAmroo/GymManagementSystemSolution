@@ -1,7 +1,9 @@
 ﻿@using GymManagementBLL.ViewModels.AnalyticsViewModels
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model AnalyticsViewModel
-
+@{
+    ViewData["Title"] = "Home Page";
+}
             <div class="row">
                 <div class="col-md-6 col-lg-7 col-12">
                     <div class="info mt-4">
@@ -65,7 +67,7 @@
                         </div>
 
                         <div class="buttons my-4">
-                            <button class="get-started bg-primary-color text-white btn rounded-5 fw-medium px-3 py-2 me-5 border-2 border-primary-color">
+                            <button class="get-started bg-primary-color text-dark btn rounded-5 fw-medium px-3 py-2 me-5 border-2 border-primary-color">
                                 Get Started
                             </button>
 
@@ -78,12 +80,12 @@
 
                 <div class="col-md-1 offset-md-2 col-12 order-first order-md-last">
                     <div class="character d-md-block d-flex justify-content-center">
-                        <img src="~/images/Theo Vance.jpg" alt="Theo Vance" />
+                        <img src="~/images/Theo Vance.png" alt="Theo Vance" />
                     </div>
                 </div>
             </div>
 
-            <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
+            <div class="bar d-flex py-4 text-primary-color fw-bolder align-items-center">
                 <p class="py-0 my-0 overflow-hidden text-nowrap">
                     outdoor & online trainers
                     <img src="~/images/star.svg" alt="star icon" /> personal training
@@ -106,7 +108,7 @@
                                     </div>
 
                                     <div class="image position-absolute d-none d-lg-block">
-                                        <img src="~/images/about p2.jpg" alt="person" />
+                                        <img src="~/images/hi.png" alt="person" />
                                     </div>
 
                                     <div class="image position-absolute d-none d-lg-block">
@@ -188,7 +190,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn bg-primary-color rounded-pill text-white fw-medium px-4 py-2 mt-3">
+                                    <button class="btn bg-primary-color rounded-pill text-dark fw-medium px-4 py-2 mt-3">
                                         Get Started
                                     </button>
                                 </div>
@@ -200,9 +202,9 @@
                 <!-- ^ workout section -->
                 <section class="workout">
                     <div class="container">
-                        <div class="title">
+                    <div class="title">
                             <h2>WORKOUTS</h2>
-                            <p class="text-white fw-bolder fs-2 mb-4">
+                            <p class="text-dark fw-bolder fs-2 mb-4">
                                 Transform Your Body with Our Dynamic Upcoming Workouts
                             </p>
                         </div>
@@ -210,7 +212,7 @@
                         <div class="row row-cols-md-3 row-cols-12 gy-4 gx-2 gx-md-4">
                             <div>
                                 <div class="card">
-                                    <img src="~/images/workout 1.jpg" class="card-img-top" alt="..." />
+                                    <img src="~/images/du.jpg" class="card-img-top" alt="..." />
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
@@ -223,7 +225,7 @@
 
                             <div>
                                 <div class="card">
-                                    <img src="~/images/workout 2.jpg" class="card-img-top" alt="..." />
+                                    <img src="~/images/ha.png" class="card-img-top" alt="..." />
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
@@ -236,7 +238,7 @@
 
                             <div>
                                 <div class="card">
-                                    <img src="~/images/workout 3.jpg" class="card-img-top" alt="..." />
+                                    <img src="~/images/fi.png" class="card-img-top" alt="..." />
 
                                     <footer class="card-footer bg-white">
                                         <h5 class="card-title text-black-alternative text-uppercase fw-bolder">
@@ -338,7 +340,7 @@
                 </section>
             </main>
             <footer class="mt-5">
-                <div class="bar bg-primary-color d-flex py-4 text-white fw-bolder align-items-center">
+            <div class="bar d-flex py-4 text-primary-color fw-bolder align-items-center">
                     <p class="py-0 my-0 overflow-hidden text-nowrap">
                         outdoor & online trainers
                         <img src="~/images/star.svg" alt="star icon" /> personal training

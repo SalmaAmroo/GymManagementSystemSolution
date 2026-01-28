@@ -16,11 +16,11 @@ else if (TempData["ErrorMessage"] != null)
     </div>
 }
 
-<div class="container">
+<div class="container page">
     <header class="d-flex justify-content-between mt-5 mb-4 align-items-center">
         <div>
             <h2 class="text-primary-color mb-0">Training Sessions</h2>
-            <p class="text-muted">Manage gym training sessions and classes</p>
+            <p class="text-muted text-white-50">Manage gym training sessions and classes</p>
         </div>
         <a asp-controller="Session" asp-action="Create" class="btn btn-fill fw-medium rounded-pill px-4 py-3">
             <i class="bi bi-plus-lg me-2"></i>Add Session
@@ -34,15 +34,12 @@ else if (TempData["ErrorMessage"] != null)
             {
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 session-card">
-                        <!-- If Session Ongoing  bg-success -->
-                        <!-- If Session Upcoming  bg-primary -->
-                        <!-- If Session Completed  bg-secondary -->
-                        <div class="card-header text-white py-3 @(session.Status == "OnGoing" ? "bg-success" : session.Status == "UpComing" ? "bg-primary" : " bg-secondary") ">
+                        <div class="card-header text-white-50 py-3 @(session.Status == "OnGoing" ? "bg-green" : session.Status == "UpComing" ? "bg-primary" : " bg-secondary") ">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">
-                                    <i class="bi bi-calendar-event me-2"></i>@session.CategoryName
+                                <h5 class="mb-0 text-dark">
+                                    <i class="bi bi-calendar-event me-2 text-dark"></i>@session.CategoryName
                                 </h5>
-                                <span class="badge bg-light text-dark">@session.Status</span>
+                                <span class="badge bg-light text-dark ">@session.Status</span>
                             </div>
                         </div>
                         <div class="card-body">
@@ -71,7 +68,7 @@ else if (TempData["ErrorMessage"] != null)
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer bg-white border-0">
+                        <div class="card-footer border-0">
                             <div class="d-grid gap-2">
                                 <a asp-action="Details" asp-route-id="@session.Id" class="btn btn-outline btn-sm">
                                     <i class="bi bi-eye me-1"></i>View Details

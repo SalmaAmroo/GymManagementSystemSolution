@@ -1,31 +1,81 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Focus states for buttons, links, and inputs */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #E7F480; /* بدل الأزرق بالأصفر */
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    margin-bottom: 60px;
+    background-color: #161616; /* خلفية المشروع داكنة */
+    color: #BCBCBC; /* لون النصوص الافتراضي */
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: #8D8D8D; /* بدل اللون الثانوي */
+    text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
 }
+
+/* Default form control styles */
+.form-control {
+    border: 2px solid #8D8D8D; /* الحدود الثانوية */
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 15px;
+    background-color: #F3F8B0; /* خلفية الحقول بالأصفر الفاتح */
+    color: #161616; /* النصوص داخل الحقول */
+    outline: none;
+    transition: all 0.4s ease;
+}
+
+    .form-control:focus {
+        background-color: #E7F480; /* الأصفر */
+        border-color: #E7F480;
+        box-shadow: 0 0 8px rgba(231, 244, 128, 0.4);
+    }
+
+/* Floating labels */
+.form-floating label {
+    color: #8D8D8D; /* بدل اللون الثانوي */
+}
+
+/* Checkbox & radio inputs */
+.form-check-input:checked {
+    background-color: #E7F480;
+    border-color: #E7F480;
+}
+
+
+/* Links */
+a {
+    color: #E7F480;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #F3F8B0;
+    }

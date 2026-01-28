@@ -27,12 +27,12 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h4>@ViewData["Title"]</h4>
+                    <h4 >CreateMemberShip</h4>
                 </div>
                 <div class="card-body">
                     <form asp-controller="MemberShip" asp-action="Create" method="post">
 
-                        <div class="mb-3">
+                        <div class="mb-3 text-dark">
                             <label asp-for="MemberId" class="form-label">Member</label>
                             <select asp-for="MemberId" asp-items="ViewBag.Members" class="form-select">
                                 <option value="">-- Select Member --</option>
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Create Membership</button>
+                            <button type="submit" class="btn bg-primary-color">Create Membership</button>
                             <a asp-action="Index" class="btn btn-secondary">Cancel</a>
                         </div>
                     </form>

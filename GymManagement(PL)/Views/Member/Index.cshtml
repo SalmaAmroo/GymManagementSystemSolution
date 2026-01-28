@@ -21,8 +21,8 @@
               </div>
             }
 
-           
-            <div class="container">
+
+            <div class="container page">
                 <header class="d-flex justify-content-end mt-5 mb-4 align-items-center">
                     <a asp-controller ="Member" asp-action="Create" class="btn btn-fill fw-medium rounded-pill px-3 py-3">
                         + Add Member
@@ -31,8 +31,8 @@
 
                 @if (Model is not null && Model.Any())
                 {
-                     <div class="table-responsive " style="overflow: visible;">
-                    <table class="table table-borderless">
+            <div class="table-responsive" style="overflow: visible;">
+                   <table class="table table-borderless">
                         <thead>
                             <tr>
                                 <th><span>@nameof(MemberViewModels.Photo)</span></th>
@@ -69,7 +69,7 @@
                                                 <button class="btn btn-link p-0 border-0" type="button"
                                                         id="dropdownMenuButton-@member.Id" data-bs-toggle="dropdown"
                                                         aria-expanded="false">
-                                                    <img src="~/images/action dots.jpg" alt="action icon" />
+                                                    <img src="~/images/doots.png" alt="action icon" />
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-start"
                                                     aria-labelledby="dropdownMenuButton-@member.Id">
